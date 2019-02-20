@@ -1,28 +1,24 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import { Normalize, Box } from '@smooth-ui/core-sc'
+import './App.css'
+import Dice from './components/Dice'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+export default () => {
+
+  const [sides, setSides] = useState(20)
+  const [count, setCount] = useState(2)
+
+  return (
+    <>
+      <Normalize />
+      <Dice
+        sides={sides}
+        count={count}
+        onChanged={({ sides, count }) => {
+          setSides(sides)
+          setCount(count)
+        }}
+      />
+    </>
+  )
 }
-
-export default App;
